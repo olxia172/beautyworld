@@ -10,5 +10,12 @@ require 'csv'
 
 ingredients_path = Rails.root.join("tmp/ingredients.csv")
 CSV.foreach(ingredients_path) do |row|
-  Ingredient.find_or_create_by(name: row[1], function: row[2])
+  ingredient = Ingredient.find_or_create_by!(name: row[1])
+  functions = row[2].split(',').map { |elem| elem.strip }
+  functions.each do |f|
+    ingredient_function = IngredientFunction.find_or_create_by!(name: f)
+    ingredient.ingredient_functions << ingredient_function
+  end
+  ingredient.save
+  binding.pry
 end
