@@ -1,5 +1,21 @@
-<h1>Currently in our database there are <%= @ingredients.count %> cosmetic and perfume ingredients </h1>
+<h1>Currently in our database there are <%= @all_ingredients %> cosmetic and perfume ingredients </h1>
 
-<h3>Ingredients sorted alphabetically</h3>
+<h3>Ingredients sorted by letter</h3>
+
+<% (1..9).each do |num|%>
+  <%= link_to num, ingredients_path({sign: num}) %>
+<% end %>
+
+<% ('A'..'Z').each do |letter|%>
+  <%= link_to letter, ingredients_path({sign: letter}) %>
+<% end %>
 
 <h3>Ingredients sorted by funtion</h3>
+
+<% @functions.each do |f| %>
+  <%= link_to f.name, ingredients_path({function: f.id}) %>
+<% end %>
+
+<% @ingredients.each do |ingr| %>
+  <p><%= ingr.name %></p>
+<% end %>
