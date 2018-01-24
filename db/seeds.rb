@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'csv'
+
+ingredients_path = Rails.root.join("tmp/ingredients.csv")
+CSV.foreach(ingredients_path) do |row|
+  Ingredient.find_or_create_by(name: row[1], function: row[2])
+end
