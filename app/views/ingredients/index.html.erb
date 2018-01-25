@@ -16,6 +16,8 @@
   <%= link_to f.name, ingredients_path({function: f.id}) %>
 <% end %>
 
-<% @ingredients.each do |ingr| %>
+<% if sort_param %>
+  <% @ingredients.each do |ingr| %>
   <p><%= ingr.name %> | <%= link_to "Show", ingredient_path(ingr) %> </p>
+  <% end %>
 <% end %>

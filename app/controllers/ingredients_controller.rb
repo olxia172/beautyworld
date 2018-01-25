@@ -1,6 +1,7 @@
 class IngredientsController < ApplicationController
   before_action :load_current_function
   before_action :find_ingredient, only: [:show, :edit, :update, :destroy]
+  helper_method :letter_sort_param, :function_sort_param
 
   def index
     @all_ingredients = Ingredient.count
@@ -28,6 +29,11 @@ class IngredientsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @ingredient.destroy
+    redirect_to ingredients_path
   end
 
 private
