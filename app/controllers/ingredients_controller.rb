@@ -15,6 +15,13 @@ class IngredientsController < ApplicationController
       @ingredients = Ingredient.all.order(name: :asc)
     end
     @functions = IngredientFunction.all.order(name: :asc)
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: @ingredients.where("name ilike ?", "%#{params[:q]}%").limit(10).order(name: :asc)
+      end
+    end
   end
 
   def show

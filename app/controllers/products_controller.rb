@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+
   def index
     @all_products = Product.all
   end
@@ -21,10 +22,22 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    @product.update(product_params)
+    if @product.save
+      redirect_to product_path(@product)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def product_params
-    params.require(:product).permit(:name, :brand, :capacity)
+    params.require(:product).permit(:name, :brand, :capacity, :ingredient_tokens)
   end
 
   def find_product
