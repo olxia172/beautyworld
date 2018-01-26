@@ -10,7 +10,7 @@ class IngredientsController < ApplicationController
     if letter_sort_param
       @ingredients = Ingredient.where("name like ?", "#{letter_sort_param}%")
     elsif @function
-      @ingredients = @function.ingredients
+      @ingredients = @function.ingredients.order(name: :asc)
     else
       @ingredients = Ingredient.all.order(name: :asc)
     end

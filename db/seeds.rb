@@ -23,3 +23,15 @@
 #     ingredient.ingredient_functions << ingredient_function unless ingredient.ingredient_functions.include?(ingredient_function)
 #   end
 # end
+
+# ingredients_path = Rails.root.join("tmp/cosing_colorants.csv")
+# CSV.foreach(ingredients_path) do |row|
+#   ingredient = Ingredient.where("name ilike ?", "#{row.join[0..7]}%").first
+#   if ingredient
+#     ingredient.name = row.join
+#     ingredient.save
+#   else
+#     new_ingredient = Ingredient.create!(name: row.join)
+#     new_ingredient.ingredient_functions << IngredientFunction.where("name ilike ?", "%colo%")
+#   end
+# end
