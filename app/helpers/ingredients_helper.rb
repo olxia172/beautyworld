@@ -1,5 +1,5 @@
 module IngredientsHelper
-  def sort_param
-    letter_sort_param || function_sort_param
+  def filter_param
+    letter_filter_param || function_filter_param
   end
 end

@@ -17,7 +17,7 @@
   <%= f.ingredients.count %>
 <% end %>
 
-<% if sort_param %>
+<% if filter_param %>
   <% @ingredients.each do |ingr| %>
   <p><%= ingr.name %> | <%= link_to "Show", ingredient_path(ingr) %> </p>
   <% end %>

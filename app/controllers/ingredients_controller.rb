@@ -1,14 +1,14 @@
 class IngredientsController < ApplicationController
   before_action :load_current_function
   before_action :find_ingredient, only: [:show, :edit, :update, :destroy]
-  helper_method :letter_sort_param, :function_sort_param
+  helper_method :letter_filter_param, :function_filter_param
 
   def index
     @all_ingredients = Ingredient.count
-    # Rails.logger.info "Letter param to: #{letter_sort_param.inspect}"
-    # Rails.logger.info "Function param to: #{function_sort_param.inspect}"
-    if letter_sort_param
-      @ingredients = Ingredient.where("name like ?", "#{letter_sort_param}%")
+    # Rails.logger.info "Letter param to: #{letter_filter_param.inspect}"
+    # Rails.logger.info "Function param to: #{function_filter_param.inspect}"
+    if letter_filter_param
+      @ingredients = Ingredient.where("name like ?", "#{letter_filter_param}%")
     elsif @function
       @ingredients = @function.ingredients.order(name: :asc)
     else
@@ -19,7 +19,7 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: @ingredients.where("name ilike ?", "%#{params[:q]}%").limit(10).order(name: :asc)
+        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(10).order(name: :asc)
       end
     end
   end
@@ -45,6 +45,7 @@ class IngredientsController < ApplicationController
 
 private
 
+
   def find_ingredient
     @ingredient = Ingredient.find(params[:id])
   end
@@ -53,15 +54,23 @@ private
     params.require(:ingredient).permit(:name, ingredient_function_ids: [])
   end
 
-  def letter_sort_param
+  def letter_filter_param
     params[:sign] if params[:sign] && params[:sign].length == 1
   end
 
-  def function_sort_param
+  def function_filter_param
     params[:function]
   end
 
   def load_current_function
-    @function = IngredientFunction.find(function_sort_param) if function_sort_param
+    @function = IngredientFunction.find(function_filter_param) if function_filter_param
+  end
+
+  def filtration
+
+  end
+
+  def find_ingredients_tokens
+
   end
 end
