@@ -1,6 +1,7 @@
 <%= simple_form_for @product do |f| %>
   <%= f.input :name %>
-  <%= f.association :brand, as: :check_boxes %>
+  <%= f.label :brand_tokens, "Brand" %><br/>
+  <%= f.text_field :brand_tokens, data: { load: @product.brand } %>
   <%= f.input :capacity %>
   <%= f.input :ingredient_tokens, label: "Ingredients", input_html: { data: { load: @product.ingredients } }  %>
   <%= f.button :submit %>
