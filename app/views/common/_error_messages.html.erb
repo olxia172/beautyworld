@@ -1,0 +1,5 @@
+<div class="form-group has-danger">
+  <% errors_msg(object, field_name).each do |msg| %>
+    <div class="invalid-feedback error-text"> <%= msg %> </div>
+  <% end %>
+</div>

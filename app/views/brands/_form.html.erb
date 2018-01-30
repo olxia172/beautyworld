@@ -1,0 +1,15 @@
+<h1>Add new cosmetic brand</h1>
+
+<%= simple_form_for @brand do |f| %>
+  <div class="form-group">
+    <%= f.input :name %>
+    <%= render 'common/error_messages', object: @brand, field_name: :name %>
+  </div>
+  <div class="form-group">
+    <%= f.input :description %>
+    <%= render 'common/error_messages', object: @brand, field_name: :description %>
+  </div>
+  <div class="form-group">
+    <%= f.button :submit %>
+  </div>
+<% end %>

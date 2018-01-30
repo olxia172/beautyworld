@@ -12,3 +12,9 @@
  * = require_tree .
  * = require token-input
  */
+
+// errors display override bootstrap
+.help-block {
+  font-size: 1rem;
+  font-style: italic;
+}

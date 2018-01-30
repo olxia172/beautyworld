@@ -1,0 +1,6 @@
+<%= link_to "Add new brand", new_brand_path %>
+
+<% @brands.each do |brand| %>
+  <%= brand.name %>
+  <%= link_to "Show brands' products", brand_path(brand) %>
+<% end %>

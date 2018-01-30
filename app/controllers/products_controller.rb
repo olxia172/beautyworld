@@ -13,9 +13,11 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to product_path(@product), notice: "You successfully added new product!"
     else
+      flash.now.alert = "Something went wrong. Check if all fields are properly completed"
       render 'new'
+      Rails.logger.info("Błędy to: #{@product.errors.full_messages}")
     end
   end
 
@@ -28,8 +30,9 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to product_path(@product), notice: "You successfully updated this product"
     else
+      flash.now.alert = "Something went wrong. Check if all fields are properly completed"
       render 'edit'
     end
   end
@@ -37,7 +40,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :brand_tokens, :capacity, :ingredient_tokens)
+    params.require(:product).permit(:name, :capacity, :brand_id, :ingredient_tokens)
   end
 
   def find_product
