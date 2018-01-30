@@ -9,4 +9,10 @@ $(document).ready(function () {
     animateDropdown: true,
     preventDuplicates: true
   })
+
+  $("#product_brand_id").select2({
+    theme: "bootstrap",
+    placeholder: "Choose a brand",
+    allowClear: true
+  })
 })

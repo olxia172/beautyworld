@@ -14,4 +14,5 @@
 //= require jquery.tokeninput
 //= require bootstrap-sprockets
 //= require rails-ujs
+//= require select2
 //= require_tree .
