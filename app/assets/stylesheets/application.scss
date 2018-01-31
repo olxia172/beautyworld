@@ -20,3 +20,13 @@
   font-size: 1rem;
   font-style: italic;
 }
+
+// select2 bootstrap override font sizes for better look
+.select2-container--bootstrap .select2-results__group {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.select2-container--bootstrap .select2-results__option .select2-results__option {
+  font-size: 1.125rem;
+}

@@ -12,7 +12,7 @@ $(document).ready(function () {
 
   $("#product_brand_id").select2({
     theme: "bootstrap",
-    placeholder: "Choose a brand",
+    placeholder: "Choose brand",
     allowClear: true
   })
 
