@@ -46,6 +46,6 @@ private
   end
 
   def brand_params
-    params.require(:brand).permit(:name, :description)
+    params.require(:brand).permit(:name, :description, :logo)
   end
 end
