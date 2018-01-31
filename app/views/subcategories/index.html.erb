@@ -1,0 +1,7 @@
+<h1>Cosmetic categories</h1>
+
+<% @subcategories.each do |subcat| %>
+  <%= subcat.name %>
+<% end %>
+
+<%= link_to "Add new subcategory", new_subcategory_path %>

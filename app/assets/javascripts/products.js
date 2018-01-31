@@ -15,4 +15,10 @@ $(document).ready(function () {
     placeholder: "Choose a brand",
     allowClear: true
   })
+
+  $("#product_subcategory_id").select2({
+    theme: "bootstrap",
+    placeholder: "Choose category",
+    allowClear: true
+  })
 })

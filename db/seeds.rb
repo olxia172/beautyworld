@@ -35,3 +35,7 @@ require 'csv'
 #     new_ingredient.ingredient_functions << IngredientFunction.where("name ilike ?", "%colo%")
 #   end
 # end
+
+Subcategory.create!(name: "Women", main_category_id: 8)
+Subcategory.create!(name: "Men", main_category_id: 8)
+Subcategory.create!(name: "Unisex", main_category_id: 8)

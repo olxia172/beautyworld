@@ -5,14 +5,24 @@
   </div>
   <div class="form-group">
     <%= f.association :brand, as: :select %><br/>
-    <%= render 'common/error_messages', object: @product, field_name: :brand_tokens %>
+    <%= render 'common/error_messages', object: @product, field_name: :brand %>
+  </div>
+  <div class="form-group">
+    <%= f.input :subcategory_id, label: "Category",
+                required: true,
+                collection: MainCategory.order(:id),
+                as: :grouped_select,
+                group_method: :subcategories %><br/>
+    <%= render 'common/error_messages', object: @product, field_name: :subcategory_id %>
   </div>
   <div class="form-group">
     <%= f.input :capacity %>
     <%= render 'common/error_messages', object: @product, field_name: :capacity %>
   </div>
   <div class="form-group">
-    <%= f.input :ingredient_tokens, label: "Ingredients", input_html: { data: { load: @product.ingredients } }  %>
+    <%= f.input :ingredient_tokens, label: "Ingredients",
+                required: true,
+                input_html: { data: { load: @product.ingredients } }  %>
     <%= render 'common/error_messages', object: @product, field_name: :ingredient_tokens %>
   </div>
   <div class="form-group">

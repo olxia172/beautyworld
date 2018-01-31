@@ -1,0 +1,13 @@
+<%= simple_form_for @subcategory do |f| %>
+  <div class="form-group">
+    <%= f.input :name %>
+    <%= render 'common/error_messages', object: @subcategory, field_name: :name %>
+  </div>
+  <div class="form-group">
+    <%= f.association :main_category, as: :select %><br/>
+    <%= render 'common/error_messages', object: @subcategory, field_name: :main_category %>
+  </div>
+  <div class="form-group">
+    <%= f.button :submit %>
+  </div>
+<% end %>
