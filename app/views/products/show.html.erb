@@ -4,6 +4,8 @@
 <h1>Brand:</h1>
 <p> <%= @product.brand.name %> </p>
 
+<p> <%= image_tag(@product.image) %> </p>
+
 <h1>Ingredients:</h1>
 <p>
 <% @product.ingredients.each do |i| %>
