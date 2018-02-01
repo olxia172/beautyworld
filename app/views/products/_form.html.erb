@@ -30,6 +30,10 @@
     <%= render 'common/error_messages', object: @product, field_name: :ingredient_tokens %>
   </div>
   <div class="form-group">
+    <%= f.input :description %>
+    <%= render 'common/error_messages', object: @product, field_name: :description %>
+  </div>
+  <div class="form-group">
     <%= f.button :submit %>
   </div>
 <% end %>

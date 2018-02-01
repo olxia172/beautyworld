@@ -35,7 +35,10 @@ require 'csv'
 #     new_ingredient.ingredient_functions << IngredientFunction.where("name ilike ?", "%colo%")
 #   end
 # end
-
-Subcategory.create!(name: "Women", main_category_id: 8)
-Subcategory.create!(name: "Men", main_category_id: 8)
-Subcategory.create!(name: "Unisex", main_category_id: 8)
+# 
+# functions_path = Rails.root.join("tmp/functions_description.csv")
+# CSV.foreach(functions_path, {col_sep: ";"})  do |row|
+#   function = IngredientFunction.where("name like ?", "#{row[0]}").first
+#   function.description = row[1]
+#   function.save
+# end

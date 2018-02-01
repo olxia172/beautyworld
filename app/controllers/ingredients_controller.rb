@@ -19,7 +19,7 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(10).order(name: :asc)
+        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(20)
       end
     end
   end
@@ -63,13 +63,5 @@ private
 
   def load_current_function
     @function = IngredientFunction.find(function_filter_param) if function_filter_param
-  end
-
-  def filtration
-
-  end
-
-  def find_ingredients_tokens
-
   end
 end

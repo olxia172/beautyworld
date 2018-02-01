@@ -2,6 +2,7 @@ class SubcategoriesController < ApplicationController
   before_action :find_subcategory, only: [:show, :destroy]
 
   def index
+    @main_categories = MainCategory.all.order(:id)
     @subcategories = Subcategory.all.order(name: :asc)
   end
 
