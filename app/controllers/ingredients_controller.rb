@@ -7,21 +7,9 @@ class IngredientsController < ApplicationController
     @all_ingredients = Ingredient.count
     # Rails.logger.info "Letter param to: #{letter_filter_param.inspect}"
     # Rails.logger.info "Function param to: #{function_filter_param.inspect}"
-    if letter_filter_param
-      @ingredients = Ingredient.where("name like ?", "#{letter_filter_param}%")
-    elsif @function
-      @ingredients = @function.ingredients.order(name: :asc)
-    else
-      @ingredients = Ingredient.all.order(name: :asc)
-    end
     @functions = IngredientFunction.all.order(name: :asc)
-
-    respond_to do |format|
-      format.html
-      format.json do
-        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(20)
-      end
-    end
+    filtration
+    ingedient_tokens_for_form
   end
 
   def show
@@ -63,5 +51,24 @@ private
 
   def load_current_function
     @function = IngredientFunction.find(function_filter_param) if function_filter_param
+  end
+
+  def filtration
+    if letter_filter_param
+      @ingredients = Ingredient.where("name like ?", "#{letter_filter_param}%").order(:name).page(params[:page])
+    elsif @function
+      @ingredients = @function.ingredients.order(:name).page(params[:page])
+    else
+      @ingredients = Ingredient.all.order(:name).page(params[:page])
+    end
+  end
+
+  def ingedient_tokens_for_form
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(20)
+      end
+    end
   end
 end

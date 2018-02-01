@@ -18,6 +18,7 @@
 <% end %>
 
 <% if filter_param %>
+  <%= paginate @ingredients %>
   <% @ingredients.each do |ingr| %>
   <p><%= ingr.name %> | <%= link_to "Show", ingredient_path(ingr) %> </p>
   <% end %>
