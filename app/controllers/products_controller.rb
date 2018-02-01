@@ -37,6 +37,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    product_name = @product.name
+    @product.destroy
+    redirect_to products_path, notice: "You successfully deleted #{product_name}"
+  end
+
   private
 
   def product_params
