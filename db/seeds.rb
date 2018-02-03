@@ -35,10 +35,22 @@ require 'csv'
 #     new_ingredient.ingredient_functions << IngredientFunction.where("name ilike ?", "%colo%")
 #   end
 # end
-# 
+#
 # functions_path = Rails.root.join("tmp/functions_description.csv")
 # CSV.foreach(functions_path, {col_sep: ";"})  do |row|
 #   function = IngredientFunction.where("name like ?", "#{row[0]}").first
 #   function.description = row[1]
 #   function.save
+# end
+
+# allergen_path = Rails.root.join("tmp/allergens.csv")
+# CSV.foreach(allergen_path) do |row|
+#   ingredients = Ingredient.where("name ilike ?", "#{row[0]}%")
+#   i = 0
+#   while i < ingredients.size
+#     ingr = ingredients[i]
+#     ingr.allergen = true
+#     ingr.save
+#     i += 1
+#   end
 # end
