@@ -2,18 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#all-ingredniets {
+#allingredniets {
   text-align: center;
-  padding-bottom: 2.0rem;
+  margin-bottom: 2.0rem;
 }
 
 .ingredients {
   text-align: center;
-  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-style: double;
+  border-width: 0.625rem 0 0 0;
 }
 
-#function-description {
+#functiondescription {
+  margin-top: 3rem;
+  border-width: 0.625rem 0 0.625rem 0;
+  border-style: double;
   padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .one-ingredient {
@@ -21,7 +30,7 @@
 }
 
 .ingredients-filter-letter {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
 }
