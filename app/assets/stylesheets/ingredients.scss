@@ -1,3 +1,27 @@
 // Place all the styles related to the Ingredients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#all-ingredniets {
+  text-align: center;
+  padding-bottom: 2.0rem;
+}
+
+.ingredients {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+#function-description {
+  padding-top: 3rem;
+}
+
+.one-ingredient {
+  font-size: 14px;
+}
+
+.ingredients-filter-letter {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+}

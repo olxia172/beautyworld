@@ -15,7 +15,8 @@
 
 <h1>Ingrediens analysis:</h1>
 <% @product.ingredients.each do |ingr| %>
-  <p><%= ingr.name %> | <%= ingr.ingredient_functions.first.name %></p>
+
+  <p><%= ingr.name %> <%= "*" if ingr.allergen == true %> | <%= ingr.ingredient_functions.first.name %>  </p>
 <% end %>
 
 <%= link_to "Edit", edit_product_path(@product) %>

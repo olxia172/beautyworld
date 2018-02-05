@@ -19,23 +19,14 @@
       <li class="nav-item">
         <a class="nav-link" href="/ingredients">Ingredients</a>
       </li>
-      <!-- <li class="nav-item dropdown show">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Cosmetics</a>
-        <div class="dropdown-menu show" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-          <a class="dropdown-item" href="/subcategories">Cosmetic categories</a>
-          <a class="dropdown-item" href="/brands">Brands</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cosmetic products</a>
+        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
+          <a class="dropdown-item" href="#"> <%= link_to "Categories", subcategories_path, class: "dropdown-item" %> </a>
+          <a class="dropdown-item" href="#"><%= link_to "Brands", brands_path, class: "dropdown-item" %></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/products">See all products</a>
+          <a class="dropdown-item" href="#"><%= link_to "See all products", products_path, class: "dropdown-item" %></a>
         </div>
-      </li> -->
-      <li class="nav-item">
-        <a class="nav-link" href="/products">Products</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/brands">Brands</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/subcategories">Cosmetic categories</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>

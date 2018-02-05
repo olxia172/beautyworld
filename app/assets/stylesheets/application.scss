@@ -40,10 +40,6 @@
   height: 300px;
 }
 
-.pagination {
-
-}
-
 .navbar {
   background: linear-gradient(89deg, #ff4d4d, #fbbb5a, #ffff66, #8cff8b, #86ffe5, #67c0fd, #9f8dff);
   background-size: 1400% 1400%;
@@ -73,4 +69,9 @@
       50%{background-position:100% 52%}
       100%{background-position:0% 49%}
   }
+}
+
+.text-center {
+  display: table;
+  margin: 0 auto;
 }

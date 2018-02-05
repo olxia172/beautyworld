@@ -1,6 +1,9 @@
-<%= link_to "Add new brand", new_brand_path %>
+<div class="row">
+  <%= link_to "Add new brand", new_brand_path %>
+</div>
 
 <% @brands.each do |brand| %>
-  <%= brand.name %>
-  <%= link_to "Show brands' products", brand_path(brand) %>
+  <div class="col-md-3">
+    <%= link_to brand.name, brand_path(brand) %>
+  </div>
 <% end %>
