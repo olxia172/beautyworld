@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @opinion = Opinion.new
   end
 
   def edit

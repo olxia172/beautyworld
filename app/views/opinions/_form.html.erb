@@ -1,0 +1,15 @@
+<%= simple_form_for([@product, @opinion]) do |f| %>
+  <div class="form-group">
+    <%= f.input :title %>
+    <%= render 'common/error_messages', object: @opinion, field_name: :title %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :body, as: :text %>
+    <%= render 'common/error_messages', object: @opinion, field_name: :body %>
+  </div>
+
+  <div class="form-group">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

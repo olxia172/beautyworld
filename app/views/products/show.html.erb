@@ -24,3 +24,9 @@
 <% if author?(@product) %>
   <%= link_to "Edit", edit_product_path(@product) %>
 <% end %>
+
+<%= render 'opinions/form' %>
+
+<% @product.opinions.each do |opinion| %>
+  <%= render opinion %>
+<% end %>
