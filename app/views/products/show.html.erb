@@ -1,3 +1,5 @@
+<h2>Added by: <%= show_author(@product) %></h2>
+
 <h1>Name:</h1>
 <p> <%= @product.name %> </p>
 
@@ -19,4 +21,6 @@
   <p><%= ingr.name %> <%= "*" if ingr.allergen == true %> | <%= ingr.ingredient_functions.first.name %>  </p>
 <% end %>
 
-<%= link_to "Edit", edit_product_path(@product) %>
+<% if author?(@product) %>
+  <%= link_to "Edit", edit_product_path(@product) %>
+<% end %>

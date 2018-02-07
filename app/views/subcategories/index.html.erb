@@ -10,7 +10,7 @@
     <% main_cat.subcategories.each do |sub_cat| %>
       <tbody>
         <tr>
-          <th scope="row"> <%= link_to sub_cat.name, subcategory_path(sub_cat), class: "subcategory-link" %>
+          <th scope="row"> <%= link_to sub_cat.name, subcategory_products_path(sub_cat), class: "subcategory-link" %>
             <span class="badge badge-primary badge-pill"> <%= sub_cat.products.count %> </span>
           </th>
         </tr>

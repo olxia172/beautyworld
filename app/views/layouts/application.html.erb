@@ -8,43 +8,9 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">BeautyWorld</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <%= render partial: 'common/navbar' %>
 
-      <div class="collapse navbar-collapse" id="navbarColor03">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/ingredients">Ingredients</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cosmetic products</a>
-            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-              <a class="dropdown-item" href="#"> <%= link_to "Categories", subcategories_path, class: "dropdown-item" %> </a>
-              <a class="dropdown-item" href="#"><%= link_to "Brands", brands_path, class: "dropdown-item" %></a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#"><%= link_to "See all products", products_path, class: "dropdown-item" %></a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0 navbar-left">
-          <input class="form-control mr-sm-2 navbar-left" type="text" placeholder="Search for product">
-          <button class="btn btn-secondary my-2 my-sm-0 navbar-left" type="submit">Search</button>
-        </form>
-      </div>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-        </li>
-      </ul>
-    </nav>
     <% if flash[:alert] %>
       <div class="alert alert-dismissible alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>

@@ -8,6 +8,7 @@
   <p> <%= f.name %> </p>
 <% end %>
 
+<%= link_to "Show product with this ingredient", ingredient_products_path(@ingredient) %>
 <%= link_to "Edit", edit_ingredient_path(@ingredient) %>
 <%= link_to "Delete", ingredient_path(@ingredient),
                     method: :delete,

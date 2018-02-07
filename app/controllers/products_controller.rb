@@ -1,8 +1,15 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @all_products = Product.all
+    if params[:subcategory_id]
+      @products = Product.where(subcategory_id: params[:subcategory_id])
+    elsif params[:ingredient_id]
+      @products = Product.includes(:ingredients).where("ingredients.id" => params[:ingredient_id])
+    else
+      @products = Product.all.order(:created_at)
+    end
   end
 
   def new
@@ -10,14 +17,14 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.new(product_params)
 
     if @product.save
       redirect_to product_path(@product), notice: "You successfully added new product!"
     else
       flash.now.alert = "Something went wrong. Check if all fields are properly completed"
       render 'new'
-      Rails.logger.info("Błędy to: #{@product.errors.full_messages}")
+      # Rails.logger.info("Błędy to: #{@product.errors.full_messages}")
     end
   end
 

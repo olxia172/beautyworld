@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   has_and_belongs_to_many :ingredients
   belongs_to :brand
   belongs_to :subcategory
+  belongs_to :user
 
 
   attr_reader :ingredient_tokens

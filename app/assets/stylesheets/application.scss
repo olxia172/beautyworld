@@ -71,7 +71,15 @@
   }
 }
 
+// displaying pagination at the center of page for ingredients
 .text-center {
   display: table;
   margin: 0 auto;
+}
+
+// change forms
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 2rem;
 }
