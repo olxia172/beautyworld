@@ -27,10 +27,21 @@
 
 .one-ingredient {
   font-size: 14px;
+  text-align: justify;
 }
 
 .ingredients-filter-letter {
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 2rem;
+}
+
+.ingredient_ingredient_functions .checkbox {
+  width: 33%;
+  float: left;
+}
+
+.ingredient_ingredient_functions .control-label {
+  width: 100%;
+  text-align: left;
 }

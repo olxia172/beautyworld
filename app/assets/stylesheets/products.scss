@@ -1,3 +1,13 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#productDescription, #productIngredients {
+  font-size: 1.625rem;
+  margin: 1rem 0 1rem 0;
+  text-align: justify;
+}
+
+#productIngredientAnalysis li {
+  font-size: 1.25rem;
+}

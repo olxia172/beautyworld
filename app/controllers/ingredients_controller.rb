@@ -55,11 +55,11 @@ private
 
   def filtration
     if letter_filter_param
-      @ingredients = Ingredient.where("name like ?", "#{letter_filter_param}%").order(:name).page(params[:page])
+      @ingredients = Ingredient.where("name like ?", "#{letter_filter_param}%").order(:name).page(params[:page]).per(30)
     elsif @function
-      @ingredients = @function.ingredients.order(:name).page(params[:page])
+      @ingredients = @function.ingredients.order(:name).page(params[:page]).per(30)
     else
-      @ingredients = Ingredient.all.order(:name).page(params[:page])
+      @ingredients = Ingredient.all.order(:name).page(params[:page]).per(30)
     end
   end
 

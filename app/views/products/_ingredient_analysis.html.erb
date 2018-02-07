@@ -1,0 +1,7 @@
+<h3>In this product there are <%= @product.ingredients.count %> ingredients. <%= how_many_allergens?(@product) %> are potential allergens.</h3>
+
+<ol>
+  <% @product.ingredients.each do |ingr| %>
+    <li><%= ingr.name %> <%= "*" if ingr.allergen == true %> | <%= ingredient_functions(ingr) %></li>
+  <% end %>
+</ol>
