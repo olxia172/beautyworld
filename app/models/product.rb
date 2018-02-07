@@ -3,6 +3,9 @@ class Product < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :capacity, presence: true
+  validates :image, presence: true
+  validates :subcategory_id, presence: true
+  validates :ingredient_tokens, presence: true
 
   has_and_belongs_to_many :ingredients
   belongs_to :brand

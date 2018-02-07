@@ -1,39 +1,23 @@
 <%= simple_form_for @product do |f| %>
-  <div class="form-group">
-    <%= f.input :name %>
-    <%= render 'common/error_messages', object: @product, field_name: :name %>
-  </div>
-  <div class="form-group">
-    <%= f.association :brand, as: :select %><br/>
-    <%= render 'common/error_messages', object: @product, field_name: :brand %>
-  </div>
-  <div class="form-group">
-    <%= f.input :subcategory_id, label: "Category",
-                required: true,
-                collection: MainCategory.order(:id),
-                as: :grouped_select,
-                group_method: :subcategories %><br/>
-    <%= render 'common/error_messages', object: @product, field_name: :subcategory_id %>
-  </div>
-  <div class="form-group">
-    <%= f.input :capacity %>
-    <%= render 'common/error_messages', object: @product, field_name: :capacity %>
-  </div>
-  <div class="form-group">
-    <%= f.input :image, type: :file %>
-    <%= render 'common/error_messages', object: @product, field_name: :image %>
-  </div>
-  <div class="form-group">
-    <%= f.input :ingredient_tokens, label: "Ingredients",
-                required: true,
-                input_html: { data: { load: @product.ingredients } }  %>
-    <%= render 'common/error_messages', object: @product, field_name: :ingredient_tokens %>
-  </div>
-  <div class="form-group">
-    <%= f.input :description %>
-    <%= render 'common/error_messages', object: @product, field_name: :description %>
-  </div>
-  <div class="form-group">
-    <%= f.button :submit %>
-  </div>
+  <%= f.input :name %>
+
+  <%= f.association :brand, as: :select %>
+  <!-- <%= render 'common/error_messages', object: @product, field_name: :brand %> -->
+
+  <%= f.input :subcategory_id, label: "Category",
+              collection: MainCategory.order(:id),
+              as: :grouped_select,
+              group_method: :subcategories %>
+
+  <%= f.input :capacity %>
+
+  <%= f.input :image, type: :file %>
+
+  <%= f.input :ingredient_tokens, label: "Ingredients",
+              input_html: { data: { load: @product.ingredients } }  %>
+
+  <%= f.input :description %>
+
+  <%= f.button :submit %>
+
 <% end %>
