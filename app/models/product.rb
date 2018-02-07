@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :subcategory
   belongs_to :user
+  has_many :opinions, dependent: :destroy
 
 
   attr_reader :ingredient_tokens

@@ -3,14 +3,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "main_page#index"
   resources :ingredients do
-    resources :products
+    resources :products, only: [:index]
   end
 
   resources :subcategories do
     resources :products
   end
 
-  resources :products
+  resources :products do
+    resources :opinions
+  end
 
   resources :brands do
     resources :products
