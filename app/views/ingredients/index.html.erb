@@ -4,42 +4,80 @@
   </div>
 </div>
 
-<h2 class="ingredients">Ingredients sorted by letter</h2>
-
 <div class="row">
-  <% (1..9).each do |num|%>
-  <%= link_to num, ingredients_path({sign: num}), class: 'ingredients-filter-letter' %>
-  <% end %>
-  <% ('A'..'Z').each do |letter|%>
-  <%= link_to letter, ingredients_path({sign: letter}), class: 'ingredients-filter-letter' %>
-  <% end %>
-</div>
-
-<h2 class="ingredients">Ingredients sorted by funtion</h2>
-
-<div class="row">
-  <% @functions.each do |f| %>
-    <div class="col-md-4">
-      <%= link_to f.name, ingredients_path({function: f.id}) %>
-      <span class="badge badge-primary badge-pill"> <%= f.ingredients.count %> </span>
+  <div class="col-md-12">
+    <%= form_tag ingredients_path, method: :get do %>
+    <div class="input-group">
+      <%= text_field_tag :search, nil,  class: "form-control", placeholder: "Search for ingredient" %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", class: 'btn btn-primary' %>
+      </span>
     </div>
-  <% end %>
-</div>
-
-<% if filter_param %>
-  <div class="ingredients" id="functiondescription">
-    <% if function_filter_param %>
-      <h2>Function: <%= @function.name %></h2>
-      <h2>Desctiption: <%= @function.description %></h2>
     <% end %>
   </div>
-  <div class="text-center" id="ingredientsSection">
-    <%= paginate @ingredients, :params => { anchor: "ingredientsSection"}, theme: 'twitter-bootstrap-3' %></div>
-  <% @ingredients.each do |ingr| %>
+</div>
+
+<% if params[:search] %>
+  <div class="row">
+    <% @search_ingredients.each do |ingr| %>
     <div class="col-md-6">
       <p class="one-ingredient">
         <%= ingr.name %><%= "*" if allergen?(ingr) %> <%= link_to ">", ingredient_path(ingr) %>
       </p>
     </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="ingredients">Ingredients sorted by letter</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <% (1..9).each do |num|%>
+      <%= link_to num, ingredients_path({sign: num}), class: 'ingredients-filter-letter' %>
+    <% end %>
+    <% ('A'..'Z').each do |letter|%>
+      <%= link_to letter, ingredients_path({sign: letter}), class: 'ingredients-filter-letter' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="ingredients">Ingredients sorted by funtion</h2>
+  </div>
+</div>
+
+<div class="row">
+  <% @functions.each do |f| %>
+    <div class="col-md-4">
+      <%= link_to f.name, ingredients_path({function: f.id}) %>
+      <span class="badge"> <%= f.ingredients.count %> </span>
+    </div>
   <% end %>
+</div>
+
+<% if filter_param %>
+  <div class="row">
+    <% if function_filter_param %>
+      <div class="col-md-12 ingredients" id="functiondescription">
+        <h2>Function: <%= @function.name %></h2>
+        <h2>Desctiption: <%= @function.description %></h2>
+      </div>
+    <% end %>
+    <div class="text-center" id="ingredientsSection">
+      <%= paginate @ingredients, :params => { anchor: "ingredientsSection"},  theme: 'twitter-bootstrap-3' %>
+    </div>
+    <% @ingredients.each do |ingr| %>
+      <div class="col-md-6">
+        <p class="one-ingredient">
+          <%= ingr.name %><%= "*" if allergen?(ingr) %> <%= link_to ">", ingredient_path(ingr) %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 <% end %>

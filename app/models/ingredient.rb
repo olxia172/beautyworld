@@ -5,4 +5,12 @@ class Ingredient < ApplicationRecord
   has_and_belongs_to_many :products
 
   scope :like_name, -> (name) { where("name ilike ?", "#{name}%") }
+
+  def self.search(search)
+    if search
+      where("name ilike ?", "%#{search}%")
+    else
+      all
+    end
+  end
 end

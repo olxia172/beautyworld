@@ -5,6 +5,7 @@ class IngredientsController < ApplicationController
 
   def index
     @all_ingredients = Ingredient.count
+    @search_ingredients = Ingredient.search(params[:search])
     # Rails.logger.info "Letter param to: #{letter_filter_param.inspect}"
     # Rails.logger.info "Function param to: #{function_filter_param.inspect}"
     @functions = IngredientFunction.all.order(name: :asc)
@@ -59,7 +60,7 @@ private
     elsif @function
       @ingredients = @function.ingredients.order(:name).page(params[:page]).per(30)
     else
-      @ingredients = Ingredient.all.order(:name).page(params[:page]).per(30)
+      @ingredients = Ingredient.order(:name).page(params[:page]).per(30)
     end
   end
 
