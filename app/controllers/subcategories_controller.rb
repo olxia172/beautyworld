@@ -6,9 +6,6 @@ class SubcategoriesController < ApplicationController
     @subcategories = Subcategory.all.order(name: :asc)
   end
 
-  def show
-  end
-
   def new
     @subcategory = Subcategory.new
   end

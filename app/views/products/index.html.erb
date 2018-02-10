@@ -1,13 +1,11 @@
-<h1>Products</h1>
-<%= link_to "Add new product", new_product_path, class: "btn btn-info pull-right" %>
+<div class="row">
+  <div class="col-md-12 custom-padding">
+    <% if params[:subcategory_id] %>
+      <%= link_to 'Add new product', new_subcategory_product_path, class: 'btn btn-primary pull-right' %>
+    <% else %>
+      <%= link_to "Add new product", new_product_path, class: "btn btn-primary pull-right" %>
+    <% end %>
+  </div>
+</div>
 
-<% @products.each do |product| %>
-  <h2><%= product.name %></h2>
-  <%= link_to "Show", product_path(product), class: "btn btn-deafult" %>
-  <%= link_to "Edit", edit_product_path(product), class: "btn btn-deafult" %>
-  <%= link_to "Delete", product_path(product),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" },
-                      class: "btn btn-danger"%>
-
-<% end %>
+<%= render 'product_list' %>

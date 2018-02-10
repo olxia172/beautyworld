@@ -10,10 +10,17 @@ class ProductsController < ApplicationController
     else
       @products = Product.all.order(:created_at)
     end
+    @products = @products.page(params[:page]).per(5)
   end
 
   def new
-    @product = Product.new
+    if params[:subcategory_id]
+      @product = Product.new(subcategory_id: params[:subcategory_id])
+    elsif params[:brand_id]
+      @product = Product.new(brand_id: params[:brand_id])
+    else
+      @product = Product.new
+    end
   end
 
   def create

@@ -2,41 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#allingredniets {
-  text-align: center;
-  margin-bottom: 2.0rem;
-}
-
-#ingredientSearch {
+.custom-padding {
   padding: 2rem 0 2rem 0;
 }
-.ingredients {
-  text-align: center;
-  margin-bottom: 3rem;
-  margin-top: 3rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  border-style: double;
-  border-width: 0.625rem 0 0 0;
-}
 
-#functiondescription {
-  margin-top: 3rem;
-  border-width: 0.625rem 0 0.625rem 0;
-  border-style: double;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.one-ingredient {
-  font-size: 14px;
-  text-align: justify;
-}
-
-.ingredients-filter-letter {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-bottom: 2rem;
+.filter-param {
+  padding: 0 0.5rem 0 0.5rem;
 }
 
 .ingredient_ingredient_functions .checkbox {

@@ -2,10 +2,11 @@ class BrandsController < ApplicationController
   before_action :find_brand, only: [:show, :edit, :update, :destroy]
   def index
     @brands = Brand.order(:name)
+    @search_brands = Brand.where("name ilike ?", "%#{params[:search]}%")
   end
 
   def show
-    @products = Product.where(brand: @brand)
+    @products = Product.where(brand: @brand).page(params[:page]).per(5)
   end
 
   def new

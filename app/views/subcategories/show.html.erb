@@ -1,6 +1,0 @@
-<h1> <%= @subcategory.name %> </h1>
-<h2> <%= @subcategory.main_category.name %> </h2>
-
-<%= link_to "Delete", subcategory_path(@subcategory),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' }%>

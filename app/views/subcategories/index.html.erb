@@ -1,13 +1,13 @@
-<h1>Cosmetic categories</h1>
-
-<table class="table table-hover">
-  <% @main_categories.each do |main_cat| %>
-  <thead>
-    <tr>
-      <th scope="col"> <%= main_cat.name %> </th>
-    </tr>
-  </thead>
-    <% main_cat.subcategories.each do |sub_cat| %>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <% @main_categories.each do |main_cat| %>
+      <thead>
+        <tr>
+          <th class="success"> <%= main_cat.name %> </th>
+        </tr>
+      </thead>
+      <% main_cat.subcategories.each do |sub_cat| %>
       <tbody>
         <tr>
           <th scope="row"> <%= link_to sub_cat.name, subcategory_products_path(sub_cat), class: "subcategory-link" %>
@@ -15,12 +15,10 @@
           </th>
         </tr>
       </tbody>
-    <% end %>
-  <% end %>
-</table>
+      <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>
 
-<!-- <% @subcategories.each do |subcat| %>
-  <%= subcat.name %>
-<% end %> -->
-
-<%= link_to "Add new subcategory", new_subcategory_path %>
+<%= link_to "Add new subcategory", new_subcategory_path, class: 'btn btn-default' %>
