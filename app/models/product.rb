@@ -1,6 +1,14 @@
 class Product < ApplicationRecord
-  # include Elasticsearch::Model
-  # include Elasticsearch::Model::Callbacks
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  settings do
+    mappings dynamic: false do
+      indexes :name, type: :text, analyzer: :english
+    end
+  end
+
+  # id: integer, name: string, capacity: string, created_at: datetime, updated_at: datetime, brand_id: integer, subcategory_id: integer, image: string, description: text, user_id: integer
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true, uniqueness: true
@@ -20,5 +28,21 @@ class Product < ApplicationRecord
 
   def ingredient_tokens=(ids)
     self.ingredient_ids = ids.split(',') unless ids.empty?
+  end
+
+  def self.search_product(query)
+    self.search({
+      query: {
+        bool: {
+          must: [
+          {
+            multi_match: {
+              query: query,
+              fields: [:name, :description]
+            }
+          }]
+        }
+      }
+    })
   end
 end
