@@ -1,6 +1,5 @@
 class Product < ApplicationRecord
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  include Searchable
 
   settings do
     mappings dynamic: false do
