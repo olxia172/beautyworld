@@ -24,9 +24,9 @@
         </li>
         <li><%= link_to "About", root_path %></li>
       </ul>
-      <%= form_for :search_product, url: search_products_path, method: :get, html: {class: 'navbar-form navbar-right'} do |form| %>
-        <%= form.text_field :query, value: params[:search_product].presence && params[:search_product][:query], class: 'form-control', placeholder: 'Search'  %>
-        <%= form.submit 'Search', class: 'btn btn-default' %>
+      <%= form_tag search_path, method: :get, class: 'navbar-form navbar-right' do %>
+        <%= text_field_tag :query, nil, value: params[:query], class: 'form-control', placeholder: 'Search'  %>
+        <%= submit_tag 'Search', class: 'btn btn-default' %>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

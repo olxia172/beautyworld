@@ -43,8 +43,13 @@
   </div>
 </div>
 
-<%= render 'opinions/form' %>
-
-<% @product.opinions.each do |opinion| %>
-  <%= render opinion %>
-<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <% @product.opinions.each do |opinion| %>
+      <%= render opinion %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= render 'opinions/form' %>
+  </div>
+</div>

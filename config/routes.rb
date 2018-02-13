@@ -13,12 +13,11 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :opinions
-    collection do
-      get :search
-    end
   end
 
   resources :brands do
     resources :products
   end
+
+  match '/search', to: 'search#show', via: [:get, :post], as: 'search'
 end

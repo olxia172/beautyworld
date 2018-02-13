@@ -59,10 +59,10 @@ class ProductsController < ApplicationController
   end
 
   def search
-    query = params[:search_product].presence && params[:search_product][:query]
+    query = params[:search_product][:query]
 
     if query
-      @products = Product.search_product(query)
+      @products = Product.search(query).records
     end
   end
 

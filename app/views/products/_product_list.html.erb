@@ -5,20 +5,7 @@
 </div>
 <div class="row"><div class="vertical-line"></div></div>
 <% @products.each do |product| %>
-  <div class="row">
-    <div class="col-md-3">
-      <%= image_tag(product.image_url(:thumb)) %>
-    </div>
-    <div class="col-md-7">
-      <h5><%= show_categories(product) %></h5>
-      <h3><%= product.name %></h3>
-      <p><%= product.description %></p>
-    </div>
-    <div class="col-md-2">
-      <%= link_to "See details", product_path(product), class: "btn btn-success pull-right" %>
-    </div>
-  </div>
-  <div class="row"><div class="vertical-line"></div></div>
+  <%= render product %>
 <% end %>
 <div class="row">
   <div class="col-md-12 text-center">

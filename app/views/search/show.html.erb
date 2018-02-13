@@ -1,0 +1,8 @@
+<% @results.each do |r| %>
+  <%= render r %>
+<% end %>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <%= paginate @results,  theme: 'twitter-bootstrap-3' %>
+  </div>
+</div>
