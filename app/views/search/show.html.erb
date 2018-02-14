@@ -1,8 +1,23 @@
-<% @results.each do |r| %>
-  <%= render r %>
-<% end %>
 <div class="row">
-  <div class="col-md-12 text-center">
-    <%= paginate @results,  theme: 'twitter-bootstrap-3' %>
+  <div class="col-md-12">
+    <h4 class="pull-right">You searched for '<%= params[:query] %>'</h4>
   </div>
 </div>
+<% if @results.empty? %>
+  <div class="row"><div class="vertical-line"></div></div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>No results</h4>
+    </div>
+  </div>
+<% else %>
+  <% @brands.each do |brand| %>
+    <%= render brand %>
+  <% end %>
+
+  <div class="row"><div class="vertical-line"></div></div>
+
+  <% @products.each do |product| %>
+    <%= render product %>
+  <% end %>
+<% end %>

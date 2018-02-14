@@ -5,7 +5,6 @@ class Product < ApplicationRecord
     indexes :name, type: :text, analyzer: :english
   end
 
-  # id: integer, name: string, capacity: string, created_at: datetime, updated_at: datetime, brand_id: integer, subcategory_id: integer, image: string, description: text, user_id: integer
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true, uniqueness: true

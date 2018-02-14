@@ -58,14 +58,6 @@ class ProductsController < ApplicationController
     redirect_to products_path, notice: "You successfully deleted #{product_name}"
   end
 
-  def search
-    query = params[:search_product][:query]
-
-    if query
-      @products = Product.search(query).records
-    end
-  end
-
   private
 
   def product_params

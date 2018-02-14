@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-5">
-    <%= image_tag(@brand.logo_url(:thumb)) %>
+    <%= image_tag(@brand.logo_url(:thumb)) unless @brand.logo.file.nil? %>
   </div>
   <div class="col-md-5 pull-left">
     <h2><%= @brand.name %></h2>
@@ -12,7 +12,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <p><%= @brand.description %></p>
+    <p class="justify"><%= @brand.description %></p>
   </div>
 </div>
 
