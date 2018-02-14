@@ -13,12 +13,17 @@
 </div>
 
 <% if params[:search] %>
+  <% breadcrumb :search_for_brand, params[:search] %>
   <div class="row">
     <div class="col-md-12 additional-space custom-border-bottom">
-      <% @search_brands.each do |brand| %>
-        <div class="col-md-3">
-          <%= link_to brand.name, brand_path(brand) %>
-        </div>
+      <% if @search_brands.empty? %>
+        <p>No results</p>
+      <% else %>
+        <% @search_brands.each do |brand| %>
+          <div class="col-md-3">
+            <%= link_to brand.name, brand_path(brand) %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

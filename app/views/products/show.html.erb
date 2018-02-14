@@ -1,17 +1,10 @@
-<% if params[:subcategory_id] %>
-  <% breadcrumb :subcategory_product, @product %>
-<% elsif params[:brand_id] %>
-  <% breadcrumb :brand_product, @product %>
-<% else %>
-  <% breadcrumb :product, @product %>
-<% end %>
+<% breadcrumb :product, @product %>
 
 <div class="row product-main-information">
   <div class="col-md-3">
     <%= image_tag(@product.image_url(:thumb)) %>
   </div>
   <div class="col-md-7 product-name">
-    <h4><%= show_categories(@product) %></h4>
     <h1><%= @product.name %></h1>
     <h2><%= @product.brand.name %></h2>
     <h4>Added by: <%= show_author(@product) %></h4>

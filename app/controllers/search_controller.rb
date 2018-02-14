@@ -7,7 +7,7 @@ class SearchController < ApplicationController
   private
 
   def query
-    params[:query]
+    @query = params[:query]
   end
 
   def separate_brands_from_products(results)

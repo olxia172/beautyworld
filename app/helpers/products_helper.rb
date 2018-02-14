@@ -11,6 +11,10 @@ module ProductsHelper
     author.email
   end
 
+  def show_categories(product)
+    product.subcategory.main_category.name + " / " + product.subcategory.name
+  end
+
   def author?(product)
     current_user && current_user.id == product.user_id
   end
@@ -21,10 +25,6 @@ module ProductsHelper
 
   def find_brand
     Brand.find(params[:brand_id])
-  end
-
-  def show_categories(product)
-    product.subcategory.main_category.name + " / " + product.subcategory.name
   end
 
   def ingredient_functions(ingredient)

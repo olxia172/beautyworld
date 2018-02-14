@@ -19,14 +19,19 @@
 </div>
 
 <% if params[:search] %>
+  <% breadcrumb :search_for_ingredient, params[:search] %>
   <div class="row">
     <div class="custom-padding">
-      <% @search_ingredients.each do |ingr| %>
-        <div class="col-md-6">
-          <p>
-            <%= ingr.name %><%= "*" if allergen?(ingr) %> <%= link_to ">", ingredient_path(ingr) %>
-          </p>
-        </div>
+      <% if @search_ingredients.empty? %>
+        <p>No results</p>
+      <% else %>
+        <% @search_ingredients.each do |ingr| %>
+          <div class="col-md-6">
+            <p>
+              <%= ingr.name %><%= "*" if allergen?(ingr) %> <%= link_to ">", ingredient_path(ingr) %>
+            </p>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

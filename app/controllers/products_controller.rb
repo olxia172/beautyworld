@@ -3,15 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    if params[:subcategory_id]
-      @products = Product.where(subcategory_id: params[:subcategory_id])
-    elsif params[:brand_id]
-      @products = Product.where(brand_id: params[:brand_id])
-    elsif params[:ingredient_id]
-      @products = Product.includes(:ingredients).where("ingredients.id" => params[:ingredient_id])
-    else
-      @products = Product.all.order(:created_at)
-    end
+    load_products
     @products = @products.page(params[:page]).per(5)
   end
 
@@ -68,5 +60,15 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
+  end
+
+  def load_products
+    if params[:subcategory_id]
+      @products = Product.where(subcategory_id: params[:subcategory_id])
+    elsif params[:brand_id]
+      @products = Product.where(brand_id: params[:brand_id])
+    else
+      @products = Product.all.order(:created_at)
+    end
   end
 end

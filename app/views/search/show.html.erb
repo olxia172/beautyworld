@@ -1,8 +1,4 @@
-<div class="row">
-  <div class="col-md-12">
-    <h4 class="pull-right">You searched for '<%= params[:query] %>'</h4>
-  </div>
-</div>
+<% breadcrumb :search, @query %>
 <% if @results.empty? %>
   <div class="row"><div class="vertical-line"></div></div>
   <div class="row">

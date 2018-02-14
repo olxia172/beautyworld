@@ -11,8 +11,12 @@
   <body>
     <%= render 'common/navbar' %>
     <div class="container-fluid">
-      <%= render 'common/flash_messages' %>
-      <%= breadcrumbs display_single_fragment: true, style: :bootstrap %>
+      <div class="row">
+        <div class="col-md-12"><%= render 'common/flash_messages' %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><%= breadcrumbs style: :bootstrap %></div>
+      </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1"><%= yield %></div>
       </div>

@@ -34,24 +34,61 @@ crumb :brand_products do |brand|
   parent :brand, brand
 end
 
-
-crumb :subcategory_product do |product|
-  link product.name, subcategory_product_path(product)
-  parent :subcategory_products, product.subcategory
-end
-
-crumb :brand_product do |product|
-  link product.name, brand_product_path(product)
-  parent :brand_products, product.brand
-end
-
 crumb :product do |product|
-  link product.name, product_path(product)
-  parent :all_products
+  if params[:subcategory_id]
+    link product.name, subcategory_product_path(product)
+    parent :subcategory_products, product.subcategory
+  elsif params[:brand_id]
+    link product.name, brand_product_path(product)
+    parent :brand_products, product.brand
+  else
+    link product.name, product_path(product)
+    parent :all_products
+  end
+end
+
+crumb :edit_product do |product|
+  link "Edit"
+  parent :product, product
+end
+
+crumb :new_product do |product|
+  link "New"
+  if params[:subcategory_id]
+    parent :subcategory_products, product.subcategory
+  elsif params[:brand_id]
+    parent :brand_products, product.brand
+  else
+    parent :all_products
+  end
 end
 
 crumb :all_ingredients do
   link "Ingredients", ingredients_path
+end
+
+crumb :edit_brand do |brand|
+  link "Edit", edit_brand_path(brand)
+  parent :brand, brand
+end
+
+crumb :new_brand do
+  link "New", brands_path
+  parent :brands
+end
+
+crumb :search do |keyword|
+  link "Searching for '#{keyword}'"
+end
+
+crumb :search_for_ingredient do |keyword|
+  link "Searching for '#{keyword}'"
+  parent :all_ingredients
+end
+
+crumb :search_for_brand do |keyword|
+  link "Searching for '#{keyword}'"
+  parent :brands
 end
 # crumb :projects do
 #   link "Projects", projects_path
