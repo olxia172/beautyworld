@@ -15,6 +15,14 @@ module ProductsHelper
     current_user && current_user.id == product.user_id
   end
 
+  def find_subcategory
+    Subcategory.find(params[:subcategory_id])
+  end
+
+  def find_brand
+    Brand.find(params[:brand_id])
+  end
+
   def show_categories(product)
     product.subcategory.main_category.name + " / " + product.subcategory.name
   end

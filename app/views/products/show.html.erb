@@ -1,3 +1,11 @@
+<% if params[:subcategory_id] %>
+  <% breadcrumb :subcategory_product, @product %>
+<% elsif params[:brand_id] %>
+  <% breadcrumb :brand_product, @product %>
+<% else %>
+  <% breadcrumb :product, @product %>
+<% end %>
+
 <div class="row product-main-information">
   <div class="col-md-3">
     <%= image_tag(@product.image_url(:thumb)) %>

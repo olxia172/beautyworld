@@ -102,6 +102,8 @@ GEM
     ffi (1.9.18)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gretel (3.0.9)
+      rails (>= 3.1.0)
     hashie (3.5.7)
     i18n (0.9.3)
       concurrent-ruby (~> 1.0)
@@ -254,6 +256,7 @@ DEPENDENCIES
   devise
   elasticsearch-model
   elasticsearch-rails
+  gretel
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

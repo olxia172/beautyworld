@@ -1,3 +1,5 @@
+<% breadcrumb :brand, @brand %>
+
 <div class="row">
   <div class="col-md-5">
     <%= image_tag(@brand.logo_url(:thumb)) unless @brand.logo.file.nil? %>
@@ -16,13 +18,4 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <h2>Products</h2>
-  </div>
-  <div class="col-md-6">
-    <%= link_to 'Add new product', new_brand_product_path({brand_id: @brand.id}), class: 'btn btn-primary pull-right' %>
-  </div>
-</div>
-
-<%= render 'products/product_list' %>
+<%= link_to "See products", brand_products_path(@brand), class: 'text-center' %>

@@ -1,7 +1,12 @@
+<% breadcrumb :all_products %>
 <div class="row">
   <div class="col-md-12 custom-padding">
     <% if params[:subcategory_id] %>
+      <% breadcrumb :subcategory_products, find_subcategory %>
       <%= link_to 'Add new product', new_subcategory_product_path, class: 'btn btn-primary pull-right' %>
+    <% elsif params[:brand_id] %>
+      <% breadcrumb :brand_products, find_brand %>
+      <%= link_to 'Add new product', new_brand_product_path, class: 'btn btn-primary pull-right' %>
     <% else %>
       <%= link_to "Add new product", new_product_path, class: "btn btn-primary pull-right" %>
     <% end %>
