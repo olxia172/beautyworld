@@ -9,6 +9,7 @@ class IngredientsController < ApplicationController
     # Rails.logger.info "Letter param to: #{letter_filter_param.inspect}"
     # Rails.logger.info "Function param to: #{function_filter_param.inspect}"
     @functions = IngredientFunction.all.order(name: :asc)
+    @ingredients = Ingredient.all
     filtration
     ingedient_tokens_for_form
   end
@@ -68,7 +69,7 @@ private
     respond_to do |format|
       format.html
       format.json do
-        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(20)
+        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(10)
       end
     end
   end

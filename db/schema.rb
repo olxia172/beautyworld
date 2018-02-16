@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207141159) do
+ActiveRecord::Schema.define(version: 20180216131459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180207141159) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "logo"
+    t.index ["name"], name: "index_brands_on_name"
   end
 
   create_table "ingredient_functions", force: :cascade do |t|
@@ -92,6 +93,14 @@ ActiveRecord::Schema.define(version: 20180207141159) do
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
   end
 
+  create_table "sub_products", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_sub_products_on_product_id"
+  end
+
   create_table "subcategories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -121,5 +130,6 @@ ActiveRecord::Schema.define(version: 20180207141159) do
   add_foreign_key "opinions", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "subcategories"
+  add_foreign_key "sub_products", "products"
   add_foreign_key "subcategories", "main_categories"
 end

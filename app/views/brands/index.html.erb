@@ -34,7 +34,7 @@
     <div class="col-md-12">
       <%= "Popular brands" %>
     </div>
-    <% popular_brands.each do |brand| %>
+    <% Brand.popular.each do |brand| %>
       <div class="col-md-3">
         <%= link_to brand.name, brand_path(brand) %>
       </div>
@@ -44,26 +44,13 @@
 
 <div class="row"><div class="vertical-line"></div></div>
 
-<div class="row">
-  <div class="additional-space">
-    <div class="col-md-12">
-      <%= "0" %>
-    </div>
-    <% find_brands_with_first_sign_num.each do |brand| %>
-      <div class="col-md-3">
-        <%= link_to brand.name, brand_path(brand) %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<% ("A".."Z").each do |letter| %>
+<% brands_grouped_by_letter.each do |letter, brands| %>
   <div class="row">
     <div class="additional-space">
       <div class="col-md-12">
         <%= letter %>
       </div>
-      <% find_sorted_brands(letter).each do |brand| %>
+      <% brands.each do |brand| %>
         <div class="col-md-3">
           <%= link_to brand.name, brand_path(brand) %>
         </div>

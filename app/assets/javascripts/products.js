@@ -5,7 +5,7 @@ $(document).ready(function () {
     prePopulate: $('#product_ingredient_tokens').data('load'),
     hintText: "Type in an ingredient",
     searchingText: "Searching...",
-    minChars: 4,
+    minChars: 2,
     animateDropdown: true,
     preventDuplicates: true
   })

@@ -18,6 +18,7 @@ class Product < ApplicationRecord
   belongs_to :subcategory
   belongs_to :user
   has_many :opinions, dependent: :destroy
+  has_many :sub_products, dependent: :destroy
 
   def ingredient_tokens=(ids)
     self.ingredient_ids = ids.split(',') unless ids.empty?

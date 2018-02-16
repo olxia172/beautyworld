@@ -10,4 +10,9 @@ class Brand < ApplicationRecord
   validates :description, length: { in: 20..5000 }
 
   has_many :products
+
+  def self.popular
+    brand_ids = Product.group(:brand_id).pluck(:brand_id)
+    Brand.find(brand_ids)
+  end
 end
