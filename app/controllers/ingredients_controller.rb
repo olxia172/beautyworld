@@ -69,7 +69,7 @@ private
     respond_to do |format|
       format.html
       format.json do
-        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(10)
+        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(20)
       end
     end
   end

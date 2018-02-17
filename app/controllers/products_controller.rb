@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  helper_method :subcategory
+  helper_method :product_subcategory
+  helper_method :product_brand
 
   def index
     load_products
@@ -57,8 +58,12 @@ class ProductsController < ApplicationController
 
   private
 
-  def subcategory
+  def product_subcategory
     @subcategory ||= Subcategory.find(params[:subcategory_id]) if params[:subcategory_id]
+  end
+
+  def product_brand
+    @brand ||= Brand.find(params[:brand_id]) if params[:brand_id]
   end
 
   def product_params
@@ -70,10 +75,10 @@ class ProductsController < ApplicationController
   end
 
   def load_products
-    if subcategory
-      @products = subcategory.products
-    elsif params[:brand_id]
-      @products = Product.where(brand_id: params[:brand_id])
+    if product_subcategory
+      @products = product_subcategory.products
+    elsif product_brand
+      @products = product_brand.products
     else
       @products = Product.all.order(:created_at)
     end

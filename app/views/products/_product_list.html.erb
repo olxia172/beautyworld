@@ -4,9 +4,7 @@
   </div>
 </div>
 <div class="row"><div class="vertical-line"></div></div>
-<% @products.each do |product| %>
-  <%= render product %>
-<% end %>
+  <%= render @products %>
 <div class="row">
   <div class="col-md-12 text-center">
     <%= paginate @products, :params => { anchor: "paginateProducts"},  theme: 'twitter-bootstrap-3' %>

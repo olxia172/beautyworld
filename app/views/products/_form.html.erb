@@ -13,8 +13,13 @@
   <%= f.input :description %>
 
   <h3>Subproducts:</h3>
-  <%= f.simple_fields_for :sub_products, @product.sub_products do |sub_product| %>
-    <%= render 'sub_product_form', :f => sub_product %>
-  <% end %>
+  <div id="sub_products">
+    <%= f.simple_fields_for :sub_products, @product.sub_products do |sub_product| %>
+      <%= render 'sub_product_fields', :f => sub_product %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add subproduct', f, :sub_products %>
+    </div>
+  </div>
   <%= f.button :submit %>
 <% end %>

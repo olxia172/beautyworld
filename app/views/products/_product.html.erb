@@ -9,9 +9,9 @@
   </div>
   <div class="col-md-2">
     <% if params[:subcategory_id] %>
-      <%= link_to "See details", subcategory_product_path({id: product.id}), class: "btn btn-success pull-right" %>
+      <%= link_to "See details", [product_subcategory, product], class: "btn btn-success pull-right" %>
     <% elsif params[:brand_id]%>
-      <%= link_to "See details", brand_product_path({id: product.id}), class: "btn btn-success pull-right" %>
+      <%= link_to "See details", [product_brand, product], class: "btn btn-success pull-right" %>
     <% else %>
       <%= link_to "See details", product_path(product), class: "btn btn-success pull-right" %>
     <% end %>

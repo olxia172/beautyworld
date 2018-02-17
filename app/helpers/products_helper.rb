@@ -19,14 +19,6 @@ module ProductsHelper
     current_user && current_user.id == product.user_id
   end
 
-  def find_subcategory
-    Subcategory.find(params[:subcategory_id])
-  end
-
-  def find_brand
-    Brand.find(params[:brand_id])
-  end
-
   def ingredient_functions(ingredient)
     functions = ingredient.ingredient_functions.map { |f| f.name }
     functions.join(', ')
