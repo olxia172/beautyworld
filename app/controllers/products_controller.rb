@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
     else
       @product = Product.new
     end
+    @product.sub_products.build
   end
 
   def create
@@ -61,7 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :capacity, :description, :brand_id, :subcategory_id, :ingredient_tokens, :image)
+    params.require(:product).permit(:name, :capacity, :description, :brand_id, :subcategory_id, :ingredient_tokens, :image, sub_products_attributes: [:id, :name, :ingredient_tokens])
   end
 
   def find_product

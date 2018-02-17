@@ -32,7 +32,14 @@
         <p class="justify"><%= @product.description %></p>
       </div>
       <div id="productIngredients" class="tab-pane fade">
-        <p><%= product_ingredients(@product) %></p>
+        <% if has_sub_products?(@product) %>
+          <% @product.sub_products.each do |sub_product| %>
+            <h5><%= sub_product.name %></h5>
+            <p><%= product_ingredients(sub_product) %></p>
+          <% end %>
+        <% else %>
+          <p><%= product_ingredients(@product) %></p>
+        <% end %>
       </div>
       <div id="productIngredientAnalysis" class="tab-pane fade">
         <%= render 'ingredient_analysis' %>

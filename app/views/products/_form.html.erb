@@ -1,23 +1,20 @@
 <%= simple_form_for @product do |f| %>
+  <h3>General information</h3>
   <%= f.input :name %>
-
   <%= f.association :brand, as: :select %>
-  <!-- <%= render 'common/error_messages', object: @product, field_name: :brand %> -->
-
   <%= f.input :subcategory_id, label: "Category",
               collection: MainCategory.order(:id),
               as: :grouped_select,
               group_method: :subcategories %>
-
   <%= f.input :capacity %>
-
   <%= f.input :image, type: :file %>
-
-  <%= f.input :ingredient_tokens, label: "Ingredients",
+  <%= f.input :ingredient_tokens, label: "Ingredients (fill in if there are no sub-products)",
               input_html: { data: { load: @product.ingredients } }  %>
-
   <%= f.input :description %>
 
+  <h3>Subproducts:</h3>
+  <%= f.simple_fields_for :sub_products, @product.sub_products do |sub_product| %>
+    <%= render 'sub_product_form', :f => sub_product %>
+  <% end %>
   <%= f.button :submit %>
-
 <% end %>

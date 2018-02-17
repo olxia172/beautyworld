@@ -3,6 +3,7 @@ class Ingredient < ApplicationRecord
 
   has_and_belongs_to_many :ingredient_functions
   has_and_belongs_to_many :products
+  has_and_belongs_to_many :sub_products
 
   scope :like_name, -> (name) { where("name ilike ?", "#{name}%") }
 
