@@ -6,4 +6,8 @@ module IngredientsHelper
   def allergen?(ingredient)
     ingredient.allergen == true
   end
+
+  def show_ingredient_functions(ingredient)
+    ingredient.ingredient_functions.map { |function| function.name }.join(', ')
+  end
 end

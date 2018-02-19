@@ -1,15 +1,27 @@
-<h2>Ingredient name:</h2>
+<% breadcrumb :ingredient, @ingredient %>
 
-<p><%= @ingredient.name %></p>
+<div class="row">
+  <div class="col-md-12">
+    <h4><%= @ingredient.name %></h4>
+  </div>
+</div>
 
-<h2>Ingredient functions:</h2>
-
-<% @ingredient.ingredient_functions.each do |f| %>
-  <p> <%= f.name %> </p>
+<% if allergen?(@ingredient) %>
+  <div class="row">
+    <div class="col-md-12">
+      <h5>This ingredient can cause allergies.</h5>
+    </div>
+  </div>
 <% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h5><%= show_ingredient_functions(@ingredient) %></h5>
+  </div>
+</div>
 
 <%= link_to "Show product with this ingredient", ingredient_products_path(@ingredient) %>
-<%= link_to "Edit", edit_ingredient_path(@ingredient) %>
-<%= link_to "Delete", ingredient_path(@ingredient),
+<%= link_to "Edit", [:edit, @ingredient], class: 'btn btn-success' %>
+<%= link_to "Delete", [@ingredient],
                     method: :delete,
-                    data: { confirm: 'Are you sure?' }%>
+                    data: { confirm: 'Are you sure?' },
+                    class: 'btn btn-danger' %>

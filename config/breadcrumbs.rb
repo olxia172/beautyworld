@@ -10,6 +10,11 @@ crumb :all_categories do
   link "Categories", subcategories_path
 end
 
+crumb :new_subcategory do
+  link 'New'
+  parent :all_categories
+end
+
 crumb :main_category do |subcategory|
   link subcategory.main_category.name, subcategories_path
   parent :all_categories
@@ -65,6 +70,21 @@ end
 
 crumb :all_ingredients do
   link "Ingredients", ingredients_path
+end
+
+crumb :new_ingredient do
+  link 'New'
+  parent :all_ingredients
+end
+
+crumb :ingredient do |ingredient|
+  link ingredient.name, ingredient_path(ingredient)
+  parent :all_ingredients
+end
+
+crumb :edit_ingredient do
+  link 'Edit'
+  parent :ingredient
 end
 
 crumb :edit_brand do |brand|
