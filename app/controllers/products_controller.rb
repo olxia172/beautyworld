@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :product_brand, only: [:create]
 
   helper_method :product_subcategory
   helper_method :product_brand
@@ -23,9 +24,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(product_params)
+    binding.pry
 
     if @product.save
-      redirect_to product_path(@product), notice: "You successfully added new product!"
+      redirect_to [@brand, @subcategory, @product].compact, notice: "You successfully added new product!"
     else
       flash.now.alert = "Something went wrong. Check if all fields are properly completed"
       render 'new'
@@ -67,7 +69,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :capacity, :description, :brand_id, :subcategory_id, :ingredient_tokens, :image, sub_products_attributes: [:id, :name, :ingredient_tokens])
+    params.require(:product).permit(:name, :capacity, :description, :brand_id, :subcategory_id, :ingredient_tokens, :image, sub_products_attributes: [:id, :name, :ingredient_tokens, :_destroy])
   end
 
   def find_product

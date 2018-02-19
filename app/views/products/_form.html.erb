@@ -1,4 +1,4 @@
-<%= simple_form_for @product do |f| %>
+<%= simple_form_for [@brand, @subcategory, @product].compact do |f| %>
   <h3>General information</h3>
   <%= f.input :name %>
   <%= f.association :brand, as: :select %>

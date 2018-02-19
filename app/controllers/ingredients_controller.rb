@@ -17,20 +17,35 @@ class IngredientsController < ApplicationController
   def show
   end
 
+  def new
+    @ingredient = Ingredient.new
+  end
+
+  def create
+    @ingredient = Ingredient.new(ingredient_params)
+    if @ingredient.save
+      redirect_to ingredient_path(@ingredient), notice: "You successfully added new ingredient"
+    else
+      flash.now.alert = "Something went wrong. Check if all fields are properly completed"
+      render 'new'
+    end
+  end
+
   def edit
   end
 
   def update
     if @ingredient.update(ingredient_params)
-      redirect_to ingredient_path(@ingredient)
+      redirect_to ingredient_path(@ingredient), notice: "You successfully updated this ingredient"
     else
+      flash.now.alert = "Something went wrong. Check if all fields are properly completed"
       render 'edit'
     end
   end
 
   def destroy
     @ingredient.destroy
-    redirect_to ingredients_path
+    redirect_to ingredients_path, notice: "You successfully deleted an ingredient"
   end
 
 private
@@ -69,7 +84,7 @@ private
     respond_to do |format|
       format.html
       format.json do
-        render json: @ingredients.where("name ilike ?", "%#{params[:ingr]}%").limit(20)
+        render json: @ingredients.where("name ilike ?", "#{params[:ingr]}%").limit(30)
       end
     end
   end

@@ -2,5 +2,4 @@
   <%= f.input :name %>
   <%= f.association :ingredient_functions, collection: IngredientFunction.order(:name), as: :check_boxes %>
   <%= f.button :submit, class: 'btn btn-success'%>
-  <%= link_to "Cancel", ingredient_path(@ingredient), class: 'btn btn-default' %>
 <% end %>
