@@ -8,7 +8,7 @@
               group_method: :subcategories %>
   <%= f.input :capacity %>
   <%= f.input :image, type: :file %>
-  <%= f.input :ingredient_tokens, label: "Ingredients (fill in if there are no sub-products)",
+  <%= f.input :ingredient_tokens, label: 'Ingredients (fill in if there are no sub-products)',
               input_html: { data: { load: @product.ingredients } }  %>
   <%= f.input :description %>
 

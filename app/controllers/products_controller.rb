@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :product_brand, only: [:create]
+  before_action :product_brand
+  before_action :product_subcategory
 
   helper_method :product_subcategory
   helper_method :product_brand
@@ -24,12 +25,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(product_params)
-    binding.pry
-
     if @product.save
-      redirect_to [@brand, @subcategory, @product].compact, notice: "You successfully added new product!"
+      redirect_to [@brand, @subcategory, @product].compact, notice: 'You successfully added new product!'
     else
-      flash.now.alert = "Something went wrong. Check if all fields are properly completed"
+      flash.now.alert = 'Something went wrong. Check if all fields are properly completed'
       render 'new'
       # Rails.logger.info("Błędy to: #{@product.errors.full_messages}")
     end
@@ -45,9 +44,9 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     if @product.save
-      redirect_to product_path(@product), notice: "You successfully updated this product"
+      redirect_to [@brand, @subcategory, @product].compact, notice: 'You successfully updated this product'
     else
-      flash.now.alert = "Something went wrong. Check if all fields are properly completed"
+      flash.now.alert = 'Something went wrong. Check if all fields are properly completed'
       render 'edit'
     end
   end
@@ -55,7 +54,7 @@ class ProductsController < ApplicationController
   def destroy
     product_name = @product.name
     @product.destroy
-    redirect_to products_path, notice: "You successfully deleted #{product_name}"
+    redirect_to [@brand, @subcategory, :products].compact, notice: "You successfully deleted #{product_name}"
   end
 
   private
@@ -69,7 +68,9 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :capacity, :description, :brand_id, :subcategory_id, :ingredient_tokens, :image, sub_products_attributes: [:id, :name, :ingredient_tokens, :_destroy])
+    params.require(:product).permit(:name, :capacity, :description, :brand_id,
+                                    :subcategory_id, :ingredient_tokens, :image,
+                                    sub_products_attributes: [:id, :name, :ingredient_tokens, :_destroy])
   end
 
   def find_product
