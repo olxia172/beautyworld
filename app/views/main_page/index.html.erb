@@ -1,3 +1,13 @@
 <% breadcrumb :root %>
 
-<h1>Hello</h1>
+<h3>Last added products</h3>
+
+<% @products.each do |product| %>
+  <div class="col-md-4">
+    <%= link_to product, class: 'link-to-product' do %>
+      <%= image_tag(product.image_url(:thumb)) %>
+      <h4><%= product.name %></h4>
+      <h6><%= show_categories(product) %></h6>
+    <% end %>
+  </div>
+<% end %>

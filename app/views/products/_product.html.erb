@@ -1,20 +1,7 @@
-<div class="row">
-  <div class="col-md-3">
+<div class="col-md-4">
+  <%= link_to [@brand, @subcategory, product].compact, class: 'link-to-product' do %>
     <%= image_tag(product.image_url(:thumb)) %>
-  </div>
-  <div class="col-md-7">
-    <h5><%= show_categories(product) %></h5>
-    <h3><%= product.name %></h3>
-    <p class="justify"><%= product.description %></p>
-  </div>
-  <div class="col-md-2">
-    <% if params[:subcategory_id] %>
-      <%= link_to "See details", [product_subcategory, product], class: "btn btn-success pull-right" %>
-    <% elsif params[:brand_id]%>
-      <%= link_to "See details", [product_brand, product], class: "btn btn-success pull-right" %>
-    <% else %>
-      <%= link_to "See details", product_path(product), class: "btn btn-success pull-right" %>
-    <% end %>
-  </div>
+    <h4><%= product.name %></h4>
+    <h6><%= show_categories(product) %></h6>
+  <% end %>
 </div>
-<div class="row"><div class="vertical-line"></div></div>
