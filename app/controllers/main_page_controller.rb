@@ -6,6 +6,6 @@ class MainPageController < ApplicationController
   private
 
   def last_added_products
-    Product.order(created_at: :desc).limit(6)
+    Product.order(created_at: :desc).limit(9)
   end
 end

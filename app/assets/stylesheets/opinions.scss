@@ -1,3 +1,30 @@
 // Place all the styles related to the opinions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.opinion-render, .opinion-form-render {
+  width: 100%;
+  height: auto;
+  background: #fefefe;
+  border: 2px solid #fcfcfc;
+  box-shadow: 0 5px 12px rgba(34, 25, 25, 0.4);
+  margin: 0 5px 25px;
+  padding: 15px;
+  padding-bottom: 10px;
+  transition: opacity .4s ease-in-out;
+  display: inline-block;
+  column-break-inside: avoid;
+}
+.opinion-form-render {
+  padding: 40px;
+}
+
+.opinion-render h6 {
+  font-style: italic;
+  text-align: left;
+  color: gray;
+}
+
+#opinion_body {
+  height: 200px;
+}

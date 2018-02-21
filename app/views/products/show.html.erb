@@ -6,11 +6,12 @@
     <%= image_tag(@product.image_url(:thumb)) %>
   </div>
   <div class="col-md-7 product-name">
-    <h1><%= @product.name %></h1>
-    <h2><%= @product.brand.name %></h2>
-    <h4>Added by: <%= show_author(@product) %></h4>
+    <h4><%= @product.brand.name %></h4>
+    <h3><%= @product.name %></h3>
+    <h5><%= show_categories(@product) %></h5>
   </div>
-  <div class="col-md-2 product-description">
+  <div class="col-md-2">
+    <h6>Added by: <%= show_author(@product) %></h6>
     <% if author?(@product) %>
       <%= link_to "Edit", [:edit, @brand, @subcategory, @product].compact, class: "btn btn-success" %>
       <%= link_to "Delete", [@brand, @subcategory, @product].compact, method: :delete,
@@ -20,7 +21,7 @@
   </div>
 </div>
 
-<div class="fb-like" data-href="<%= url_for([@brand, @product]) %>"
+<div class="fb-like additional-space" data-href="<%= url_for([@brand, @product]) %>"
     data-layout="standard" data-action="like" data-size="large"
     data-show-faces="true" data-share="true">
 </div>
@@ -49,7 +50,7 @@
         <% end %>
       </div>
       <div id="productIngredientAnalysis" class="tab-pane fade">
-        <%= render 'ingredient_analysis' %>
+        <%= render 'products/ingredient_analysis' %>
       </div>
       <div id="productMore" class="tab-pane fade">
         <p>Waiting for more information.</p>
@@ -65,6 +66,13 @@
     <% end %>
   </div>
   <div class="col-md-6">
-    <%= render 'opinions/form' %>
+    <% if current_user.user_has_opinion(@product) %>
+      <h5 class="text-center">Your opinion:</h5>
+      <%= render current_user_opinion(@product) %>
+    <% elsif current_user %>
+      <%= render 'opinions/form' %>
+    <% else %>
+      <h5 class="text-center">If you want to add an opinion, you have to be logged in</h5>
+    <% end %>
   </div>
 </div>

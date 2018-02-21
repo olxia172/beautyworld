@@ -1,2 +1,20 @@
-<h4><%= opinion.title %></h4>
-<p><%= opinion.body %></p>
+<div class="row opinion-render">
+  <div class="col-md-10">
+    <h4><%= opinion.title %></h4>
+    <h6>Submitted by <%= show_author(opinion) %> | <%= opinion.created_at.strftime('%F') %></h6>
+    <p><%= opinion.body %></p>
+  </div>
+  <div class="col-md-2">
+    <% if author(opinion) %>
+      <%= link_to 'Delete', [@product, opinion], method: :delete,
+                        data: { confirm: "Are you sure?" },
+                        class: "btn btn-danger btn-xs" %>
+    <% end %>
+    <% if opinion.hit %>
+      <h5>HIT!</h5>
+    <% end %>
+    <% if opinion.buy_again %>
+      <h5>BUY AGAIN!</h5>
+    <% end %>
+  </div>
+</div>

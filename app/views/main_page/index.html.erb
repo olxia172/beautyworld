@@ -14,13 +14,11 @@
 
   <!-- Wrapper for slides -->
   <div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
+    <div class="col-md-12">
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <% @products[0..1].each do |product| %>
-          <div class="col-md-6">
+          <% @products[0..2].each do |product| %>
+          <div class="col-md-4">
             <%= link_to product, class: 'link-to-product' do %>
             <%= image_tag(product.image_url(:thumb)) %>
             <h4><%= product.name %></h4>
@@ -30,8 +28,8 @@
           <% end %>
         </div>
         <div class="item">
-          <% @products[2..3].each do |product| %>
-          <div class="col-md-6">
+          <% @products[3..5].each do |product| %>
+          <div class="col-md-4">
             <%= link_to product, class: 'link-to-product' do %>
             <%= image_tag(product.image_url(:thumb)) %>
             <h4><%= product.name %></h4>
@@ -41,8 +39,8 @@
           <% end %>
         </div>
         <div class="item">
-          <% @products[4..5].each do |product| %>
-          <div class="col-md-6">
+          <% @products[6..8].each do |product| %>
+          <div class="col-md-4">
             <%= link_to product, class: 'link-to-product' do %>
             <%= image_tag(product.image_url(:thumb)) %>
             <h4><%= product.name %></h4>
@@ -53,16 +51,14 @@
         </div>
       </div>
     </div>
-    <div class="col-md-2">
-    </div>
   </div>
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+  <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
-  </a>
+  </a> -->
 </div>

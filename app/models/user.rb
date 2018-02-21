@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :products
   has_many :opinions, dependent: :destroy
+
+  def user_has_opinion(product)
+    product.opinions.where(user_id: id).exists?
+  end
 end

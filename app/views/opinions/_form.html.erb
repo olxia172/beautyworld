@@ -1,15 +1,12 @@
-<%= simple_form_for([@product, @opinion]) do |f| %>
-  <div class="form-group">
+<div class="row">
+  <div class="col-md-12 opinion-form-render">
+    <%= simple_form_for([@product, @opinion]) do |f| %>
     <%= f.input :title %>
-    <%= render 'common/error_messages', object: @opinion, field_name: :title %>
-  </div>
-
-  <div class="form-group">
     <%= f.input :body, as: :text %>
-    <%= render 'common/error_messages', object: @opinion, field_name: :body %>
+    <%= f.input :rate, collection: 1..5 %>
+    <%= f.input :hit, label: 'Is this product a HIT for You?', as: :boolean, checked_value: true, unchecked_value: false %>
+    <%= f.input :buy_again, label: 'Will You buy this product again?', as: :boolean, checked_value: true, unchecked_value: false %>
+    <%= f.button :submit, class: "btn btn-primary pull-right" %>
+    <% end %>
   </div>
-
-  <div class="form-group">
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
